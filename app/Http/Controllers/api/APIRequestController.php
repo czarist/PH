@@ -12,7 +12,7 @@ class APIRequestController extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://www.eporner.com/api/v2/video/search/?&per_page=10&page=$page",
+            CURLOPT_URL => "https://www.eporner.com/api/v2/video/search/?&per_page=16&page=$page",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,

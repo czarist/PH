@@ -10,9 +10,9 @@ class HomeController extends Controller
     public function index()
     {
         $data = (new APIRequestController)->getData(1);
-        // echo '<pre>';
-        // print_r($data['videos']);
-        // echo '</pre>';
+        echo '<pre>';
+        print_r($data['videos'][0]);
+        echo '</pre>';
 
         return view('home', compact('data'));
     }
