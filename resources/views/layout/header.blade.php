@@ -40,6 +40,8 @@
 
     @if ($pagination_search)
         <script src="{{ asset('js/pagination_search.js') }}"></script>
+        <input type="hidden" name="page_search" id="page_search" value="{{ $_GET['page_search'] }}">
+        <input type="hidden" name="search_query" id="search_query" value="{{ $_GET['search_query'] }}">
     @endif
 
     <title>Porn Hubbi</title>

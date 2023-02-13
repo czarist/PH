@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const url = document.getElementById('baseURL').value;
+    const page_search = document.getElementById('page_search').value;
+    const search_query = document.getElementById('search_query').value;
+    const total_pages = document.getElementById('total_pages').value;
 
     var Pagination = {
         code: '',
@@ -12,14 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         Add: function (s, f) {
             for (var i = s; i < f; i++) {
-                Pagination.code += '<a href="' + url + '/page/' + i + '" rel="nofollow">' + i + '</a>';
+                Pagination.code += '<a href="' + url + '/search/?page_search=' + i + '&search_query=' + search_query + '" rel="nofollow">' + i + '</a>';
             }
         },
         Last: function () {
-            Pagination.code += '<i>...</i><a href="' + url + '/page/' + Pagination.size + '" rel="nofollow">' + Pagination.size + '</a>';
+            Pagination.code += '<i>...</i><a href="' + url + '/search/?page_search=' + Pagination.size + '&search_query=' + search_query + '" rel="nofollow">' + Pagination.size + '</a>';
         },
         First: function () {
-            Pagination.code += '<a href="' + url + '/page/1" rel="nofollow">1</a><i>...</i>';
+            Pagination.code += '<a href="' + url + '/search/?page_search=1&search_query=' + search_query + '" rel="nofollow">1</a><i>...</i>';
         },
         Click: function () {
             Pagination.page = +this.innerHTML;
@@ -97,11 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    const page = document.getElementById('page').value;
-    const total_pages = document.getElementById('total_pages').value;
 
-    var size = Math.round(total_pages);
-    init(size, parseInt(page), 3);
+    var size = Math.round(total_pages -1);
+    init(size, parseInt(page_search), 3);
 });
 
 jQuery(document).ready(function ($) { });
