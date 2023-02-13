@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\APIcategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,5 @@ use App\Http\Controllers\VideoController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/page/{page}', [HomeController::class, 'page']);
 Route::get('/video/{id}/{title}', [VideoController::class, 'index']);
+//Route::post('/CategoriesList', 'APIcategoriesController@index');
+

@@ -50,9 +50,14 @@ class APIRequestController extends Controller
         if ($type == 'long') {
             $per_page = '30';
         } else if ($type == 'short') {
-            $per_page = '10';
+            $per_page = '8';
         }
 
-        return $this->curlCall("https://www.eporner.com/api/v2/video/search/?query=$search&per_page=$per_page&page=$page");
+        return $this->curlCall("https://www.eporner.com/api/v2/video/search/?query=$search&per_page=$per_page&page=$page&gay=1");
+    }
+
+    public function getCategoriesList()
+    {
+        return $this->curlCall("https://api.redtube.com/?data=redtube.Categories.getCategoriesList&output=json");
     }
 }
