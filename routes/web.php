@@ -23,6 +23,7 @@ Route::fallback(function () {
 
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/page/{page}', [IndexController::class, 'page']);
+Route::get('/search', [IndexController::class, 'search']);
 
 //video posts
 

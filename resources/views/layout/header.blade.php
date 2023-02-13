@@ -38,6 +38,10 @@
         <script src="{{ asset('js/pagination.js') }}"></script>
     @endif
 
+    @if ($pagination_search)
+        <script src="{{ asset('js/pagination_search.js') }}"></script>
+    @endif
+
     <title>Porn Hubbi</title>
 
     <input type="hidden" name="baseURL" id="baseURL" value="{{ url('/') }}">
@@ -81,9 +85,13 @@
                         <a class="nav-link" href="#">LIVE SEX</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn my-2 my-sm-0" type="submit"><i class="bi bi-search text-white"></i></button>
+                <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" id="search_videos">
+                    <input type="hidden" name="page_search" id="page_search" value="1">
+                    <input class="form-control mr-sm-2" type="text" id="search_query" placeholder="Search"
+                        name="search_query">
+                    <button class="btn my-2 my-sm-0" type="submit">
+                        <i class="bi bi-search text-white"></i>
+                    </button>
                 </form>
             </nav>
         </div>

@@ -48,12 +48,12 @@ class APIRequestController extends Controller
     public function getSearch($search, $page, $type)
     {
         if ($type == 'long') {
-            $per_page = '30';
+            $per_page = '32';
         } else if ($type == 'short') {
             $per_page = '8';
         }
 
-        return $this->curlCall("https://www.eporner.com/api/v2/video/search/?query=$search&per_page=$per_page&page=$page&gay=1");
+        return $this->curlCall("https://www.eporner.com/api/v2/video/search/?query=$search&per_page=$per_page&page=$page");
     }
 
     public function getCategoriesList()

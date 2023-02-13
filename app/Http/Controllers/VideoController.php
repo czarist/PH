@@ -11,6 +11,7 @@ class VideoController extends Controller
     {
         $video = (new APIRequestController)->getVideo($id);
         $pagination = false;
+        $pagination_search = false;
         $keywords = explode(",", $video['keywords']);
         $firstTerm = preg_replace('/[\s\W]+/', '-', $keywords[0]);
         $relateds = (new APIRequestController)->getSearch($firstTerm, 1, 'short');
@@ -19,6 +20,6 @@ class VideoController extends Controller
         // print_r($relateds);
         // echo '</pre>';
 
-        return view('video', compact('video', 'title', 'pagination', 'keywords', 'relateds'));
+        return view('video', compact('video', 'title', 'pagination', 'keywords', 'relateds', 'pagination_search'));
     }
 }
