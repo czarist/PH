@@ -16,3 +16,42 @@ header nav a {
     text-transform: uppercase;
     color: white !important;
 }
+
+/* pagination */
+
+#pagination {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 1px 2px 4px 2px;
+    background-color: #212121;
+    padding: 7px;
+}
+
+#pagination a {
+    margin: 0 2px 0 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #212121;
+}
+
+#pagination a,
+#pagination i {
+    display: inline-block;
+    width: 41px;
+    color: #ffbf00;
+    text-align: center;
+    font-size: 11px;
+    padding: 3px 0 2px 0;
+    font-family: 'roboto-bold' !important;
+}
+
+#pagination i {
+    margin: 0 3px 0 3px;
+}
+
+#pagination a.current {
+    background-color: #ffbf00;
+    color: #212121;
+}
+
+/* end pagination */

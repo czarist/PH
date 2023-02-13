@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 class APIRequestController extends Controller
 {
-    public function getData($page)
+
+    private function curlCall($url)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://www.eporner.com/api/v2/video/search/?&per_page=16&page=$page",
+            CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -32,5 +33,26 @@ class APIRequestController extends Controller
         } else {
             return json_decode($response, true);
         }
+    }
+
+    public function getData($page)
+    {
+        return $this->curlCall("https://www.eporner.com/api/v2/video/search/?&per_page=36&page=$page");
+    }
+
+    public function getVideo($id)
+    {
+        return $this->curlCall("https://www.eporner.com/api/v2/video/id/?id=$id&thumbsize=medium&format=json");
+    }
+
+    public function getSearch($search, $page, $type)
+    {
+        if ($type == 'long') {
+            $per_page = '30';
+        } else if ($type == 'short') {
+            $per_page = '10';
+        }
+
+        return $this->curlCall("https://www.eporner.com/api/v2/video/search/?query=$search&per_page=$per_page&page=$page");
     }
 }

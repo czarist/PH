@@ -9,11 +9,23 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data = (new APIRequestController)->getData(1);
-        echo '<pre>';
-        print_r($data['videos'][0]);
-        echo '</pre>';
+        $page = 1;
+        $data = (new APIRequestController)->getData($page);
+        $total_pages = $data['total_pages'];
+        $pagination = true;
+        // echo '<pre>';
+        // print_r($data);
+        // echo '</pre>';
 
-        return view('home', compact('data'));
+        return view('home', compact('data', 'page', 'total_pages', 'pagination'));
+    }
+
+    public function page($page)
+    {
+        $data = (new APIRequestController)->getData($page);
+        $total_pages = $data['total_pages'];
+        $pagination = true;
+
+        return view('home', compact('data', 'page', 'total_pages', 'pagination'));
     }
 }
