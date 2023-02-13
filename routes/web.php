@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
-use App\Http\Controllers\APIcategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +15,15 @@ use App\Http\Controllers\APIcategoriesController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/page/{page}', [HomeController::class, 'page']);
-Route::get('/video/{id}/{title}', [VideoController::class, 'index']);
-//Route::post('/CategoriesList', 'APIcategoriesController@index');
+Route::fallback(function () {
+    return app()->make(\App\Http\Controllers\IndexController::class)->error404();
+});
 
+//general pages
+
+Route::get('/', [IndexController::class, 'index']);
+Route::get('/page/{page}', [IndexController::class, 'page']);
+
+//video posts
+
+Route::get('/video/{id}/{title}', [VideoController::class, 'index']);

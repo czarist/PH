@@ -60,4 +60,9 @@ class APIRequestController extends Controller
     {
         return $this->curlCall("https://api.redtube.com/?data=redtube.Categories.getCategoriesList&output=json");
     }
+
+    public function getStarsList($page)
+    {
+        return $this->curlCall("https://api.redtube.com/?data=redtube.Stars.getStarDetailedList&output=json&page=$page");
+    }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\api\APIRequestController;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class IndexController extends Controller
 {
     public function index()
     {
@@ -27,5 +27,12 @@ class HomeController extends Controller
         $pagination = true;
 
         return view('home', compact('data', 'page', 'total_pages', 'pagination'));
+    }
+
+    public function error404()
+    {
+        $pagination = false;
+
+        return view('404', compact('pagination'));
     }
 }
