@@ -10,14 +10,13 @@
                         title="{{ $video['keywords'] }}">
                     </iframe>
                 </div>
-                <div class="mt-3">
-                    <span class="text-white">Tags:</span>
+                <div class="d-flex flex-wrap mb-2 mt-5">
+                    <h4 class="text-white mr-4">Tags:</h4>
                     @foreach ($keywords as $key)
-                        <span class="text-white">
-                            <a href="{{ url('/') }}/tags/{{ preg_replace('/[\s\W]+/', '-', $key) }}">
-                                {{ $key }}
-                            </a>,
-                        </span>
+                        <a class="category_tag"
+                            href="{{ url('/') }}/tag/{{ preg_replace('/[\s\W]+/', '', $key) }}/page/1">
+                            {{ $key }}
+                        </a>
                     @endforeach
                 </div>
             </div>

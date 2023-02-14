@@ -44,6 +44,11 @@
         <input type="hidden" name="search_query" id="search_query" value="{{ $_GET['search_query'] }}">
     @endif
 
+    @if ($pagination_category)
+        <script src="{{ asset('js/pagination_category.js') }}"></script>
+    @endif
+
+
     <title>Porn Hubbi</title>
 
     <input type="hidden" name="baseURL" id="baseURL" value="{{ url('/') }}">
@@ -67,7 +72,8 @@
                             CATEGORIES
                         </a>
                         <div id="nav" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item bg-dark" href="{{ url('/') }}/categorys">Check All <i class="bi bi-arrow-right"></i>
+                            <a class="dropdown-item bg-dark" href="{{ url('/') }}/categorys">Check All <i
+                                    class="bi bi-arrow-right"></i>
                             </a>
                             <div class="dropdown-divider bg-dark"></div>
                         </div>

@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 category = category.replace(/\s|[0-9_]|\W|[#$%^&*()]/g, '-');
 
                 myList.innerHTML += `
-                <a class="dropdown-item bg-dark" href="${url}/category/${category}">${category}</a>
+                <a class="dropdown-item bg-dark" href="${url}/category/${category}/page/1">${category}</a>
                 <div class="dropdown-divider bg-dark"></div>
                 `;
                 count++;
