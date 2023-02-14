@@ -5,7 +5,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div id="myList" class="d-flex flex-wrap"></div>
+                <h1 class="text-white mb-5">Categorys:</h1>
+                <div id="normalList" class="d-flex flex-wrap mb-2"></div>
+                <h1 class="text-white mb-5">Gay Categorys:</h1>
+                <div id="gayList" class="d-flex flex-wrap mb-2"></div>
             </div>
         </div>
     </div>

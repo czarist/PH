@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const url = document.getElementById('baseURL').value;
-    const myList = document.getElementById("myList");
+    const normalList = document.getElementById("normalList");
+    const gayList = document.getElementById("gayList");
 
     async function postData(url = '', data = {}) {
         const response = await fetch(url, {
@@ -25,8 +26,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 let category = lista.category;
                 category = category.replace(/\s|[0-9_]|\W|[#$%^&*()]/g, '-');
 
-                myList.innerHTML += `
-                <a class="" href="${url}/category/${category}">${category}</a> `;
+                normalList.innerHTML += `
+                <a class="category_tag" href="${url}/category/${category}">${category}</a> `;
+            }
+            for (const lista of data[0].categories_gay) {
+                let category = lista.category;
+                category = category.replace(/\s|[0-9_]|\W|[#$%^&*()]/g, '-');
+
+                gayList.innerHTML += `
+                <a class="category_tag" href="${url}/category/${category}-gay">${category}</a> `;
             }
         }).catch(console.error);
 });
