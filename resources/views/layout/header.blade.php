@@ -66,12 +66,10 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             CATEGORIES
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item bg-dark" href="#">HOME</a>
+                        <div id="nav" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item bg-dark" href="{{ url('/') }}/categorys">Check All <i class="bi bi-arrow-right"></i>
+                            </a>
                             <div class="dropdown-divider bg-dark"></div>
-                            <a class="dropdown-item bg-dark" href="#">Another action</a>
-                            <div class="dropdown-divider bg-dark"></div>
-                            <a class="dropdown-item bg-dark" href="#">Something else here</a>
                         </div>
                     </li>
 
