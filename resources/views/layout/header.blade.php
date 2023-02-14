@@ -85,7 +85,7 @@
                         <a class="nav-link" href="#">LIVE SEX</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" id="search_videos">
+                <form class="form-inline my-2 my-lg-0" action="{{ url('/search') }}" id="search_videos">
                     <input type="hidden" name="page_search" id="page_search" value="1">
                     <input class="form-control mr-sm-2" type="text" id="search_query" placeholder="Search"
                         name="search_query">

@@ -51,4 +51,12 @@ class IndexController extends Controller
 
         return view('404', compact('pagination', 'pagination_search'));
     }
+
+    public function categorys()
+    {
+        $pagination = false;
+        $pagination_search = false;
+
+        return view('categorys', compact('pagination', 'pagination_search'));
+    }
 }

@@ -24,6 +24,8 @@ Route::fallback(function () {
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/page/{page}', [IndexController::class, 'page']);
 Route::get('/search', [IndexController::class, 'search']);
+Route::get('/categorys', [IndexController::class, 'categorys']);
+Route::get('/category/{category}', [IndexController::class, 'category']);
 
 //video posts
 
