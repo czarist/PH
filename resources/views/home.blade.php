@@ -7,13 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             @foreach ($data['videos'] as $video)
-                <div class="col-xl-3 col-12 mb-3 text-white">
-                    <a href="{{ url('/video') }}/{{ $video['id'] }}/{{ preg_replace('/[\s\W]+/', '-', $video['title']) }}"
-                        class="mw-100">
-                        <img class="mw-100" src="{{ $video['default_thumb']['src'] }}" width="427"
-                            alt="{{ $video['title'] }}">
-                    </a>
-                </div>
+                @include('layout.videobox')
             @endforeach
         </div>
         <div class="w-100 d-flex justify-content-center align-items-center">

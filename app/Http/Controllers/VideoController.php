@@ -11,14 +11,34 @@ class VideoController extends Controller
     {
         $video = (new APIRequestController)->getVideo($id);
 
-        $keywords = explode(",", $video['keywords']);
-        $firstTerm = preg_replace('/[\s\W]+/', '-', $keywords[0]);
+        if (empty($video)) {
+            return redirect('/');
+        }
+
+        $keywords_before = explode(",", $video['keywords']);
+
+        $keywords = array_filter($keywords_before, function ($string) {
+            return (strlen($string) >= 1 && strlen($string) <= 10);
+        });
+
+        $referencial = '';
+
+        foreach ($keywords as $keyword) {
+            if (strlen($keyword) > 8) {
+                $referencial = $keyword;
+            } else {
+                continue;
+            }
+        }
+
+        $string = str_replace(' ', '', $referencial);
+
+        $firstTerm = preg_replace('/[\s\W]+/', '-', $string);
         $relateds = (new APIRequestController)->getSearch($firstTerm, 1, 'short');
 
         $pagination = false;
         $pagination_search = false;
         $pagination_category = false;
-
         // echo '<pre>';
         // print_r($relateds);
         // echo '</pre>';

@@ -1,5 +1,12 @@
 @include('layout.header')
 
+<style>
+    .filter-video {
+        top: -61px !important;
+        height: 162px !important;
+    }
+</style>
+
 <div id="content" class=" pt-5 pb-5 bg-dark">
     <div class="container">
         <div class="row">
@@ -24,13 +31,7 @@
                 <h3 class="text-white">Other Videos:</h3>
             </div>
             @foreach ($relateds['videos'] as $video)
-                <div class="col-xl-3 col-12 mb-3 text-white">
-                    <a href="{{ url('/video') }}/{{ $video['id'] }}/{{ preg_replace('/[\s\W]+/', '-', $video['title']) }}"
-                        class="mw-100">
-                        <img class="mw-100" src="{{ $video['default_thumb']['src'] }}" width="427"
-                            alt="{{ $video['title'] }}">
-                    </a>
-                </div>
+                @include('layout.videobox')
             @endforeach
         </div>
     </div>

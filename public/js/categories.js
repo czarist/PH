@@ -27,14 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 category = category.replace(/\s|[0-9_]|\W|[#$%^&*()]/g, '-');
 
                 normalList.innerHTML += `
-                <a class="category_tag" href="${url}/category/${category}/page/1">${category}</a> `;
+                <a class="category_tag text-dark" href="${url}/category/${category}/page/1"><b>${category}</b></a> `;
             }
             for (const lista of data[0].categories_gay) {
                 let category = lista.category;
                 category = category.replace(/\s|[0-9_]|\W|[#$%^&*()]/g, '-');
 
                 gayList.innerHTML += `
-                <a class="category_tag" href="${url}/category/${category}-gay/page/1">${category}</a> `;
+                <a class="category_tag text-dark" href="${url}/category/${category}-gay/page/1"><b>${category}</b></a> `;
             }
         }).catch(console.error);
 });
