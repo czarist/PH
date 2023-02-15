@@ -51,6 +51,15 @@ class IndexController extends Controller
         return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category'));
     }
 
+    public function error404()
+    {
+        $pagination = false;
+        $pagination_search = false;
+        $pagination_category = false;
+
+        return view('404', compact('pagination', 'pagination_search', 'pagination_category'));
+    }
+
     public function category($cat, $page)
     {
         $data = (new APIRequestController)->getSearch($cat, $page, 'long');
@@ -63,21 +72,12 @@ class IndexController extends Controller
         return view('category', compact('data', 'page', 'cat', 'total_pages', 'pagination', 'pagination_search', 'pagination_category'));
     }
 
-    public function error404()
+    public function categories()
     {
         $pagination = false;
         $pagination_search = false;
         $pagination_category = false;
 
-        return view('404', compact('pagination', 'pagination_search', 'pagination_category'));
-    }
-
-    public function categorys()
-    {
-        $pagination = false;
-        $pagination_search = false;
-        $pagination_category = false;
-
-        return view('categorys', compact('pagination', 'pagination_search', 'pagination_category'));
+        return view('categories', compact('pagination', 'pagination_search', 'pagination_category'));
     }
 }

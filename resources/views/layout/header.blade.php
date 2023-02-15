@@ -72,7 +72,7 @@
                             CATEGORIES
                         </a>
                         <div id="nav" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item bg-dark" href="{{ url('/') }}/categorys">Check All <i
+                            <a class="dropdown-item bg-dark" href="{{ url('/') }}/categories">Check All <i
                                     class="bi bi-arrow-right"></i>
                             </a>
                             <div class="dropdown-divider bg-dark"></div>
