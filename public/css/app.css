@@ -102,10 +102,10 @@ a.category_tag:hover {
 /* box video */
 
 .box-info {
-    width: 95%;
-    border-radius: 10px;
+    width: 100%;
+    border-radius: 0px 0px 15px 15px;
     position: relative;
-    top: -50px;
+    top: 0;
 }
 
 .content-box-info {
@@ -120,15 +120,15 @@ a.category_tag:hover {
 
 .filter-video {
     position: absolute;
-    top: -109px;
+    top: 0;
     width: 100%;
     height: 240px;
     background-color: #00000082;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 0px ;
 }
 
 .img-box-video {
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 0px;
 }
 
 .star img {

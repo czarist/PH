@@ -1,11 +1,5 @@
 @include('layout.header')
 
-<style>
-    .filter-video {
-        top: -110px !important;
-    }
-</style>
-
 <div id="content" class=" pt-5 pb-5 bg-dark">
     <div class="container">
         <div class="row">
