@@ -2,8 +2,7 @@
 
 <style>
     .filter-video {
-        top: -61px !important;
-        height: 162px !important;
+        top: -110px !important;
     }
 </style>
 
@@ -30,6 +29,11 @@
             <div class="col-12 mb-2 mt-2">
                 <h3 class="text-white">Other Videos:</h3>
             </div>
+
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
             @foreach ($relateds['videos'] as $video)
                 @include('layout.videobox')
             @endforeach

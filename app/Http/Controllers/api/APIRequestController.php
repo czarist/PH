@@ -54,7 +54,7 @@ class APIRequestController extends Controller
             $per_page = '8';
         }
 
-        return $this->curlCall("https://www.eporner.com/api/v2/video/search/?query=$search&per_page=$per_page&page=$page");
+        return $this->curlCall("https://www.eporner.com/api/v2/video/search/?query=$search&per_page=$per_page&page=$page&thumbsize=big&order=top-weekly&gay=1&lq=1&format=json");
     }
 
     public function getCategoriesList()

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const url = document.getElementById('baseURL').value;
-    const page_search = document.getElementById('page_search').value;
+    const page_search = document.getElementById('page').value;
     const search_query = document.getElementById('search_query').value;
     const total_pages = document.getElementById('total_pages').value;
 
@@ -17,14 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         Add: function (s, f) {
             for (var i = s; i < f; i++) {
-                Pagination.code += '<a href="' + url + '/pornstars/page/' + i + '" rel="nofollow">' + i + '</a>';
+                Pagination.code += '<a href="' + url + '/pornstars/' + i + '" rel="nofollow">' + i + '</a>';
             }
         },
         Last: function () {
-            Pagination.code += '<i>...</i><a href="' + url + '/pornstars/page/' + Pagination.size + '" rel="nofollow">' + Pagination.size + '</a>';
+            Pagination.code += '<i>...</i><a href="' + url + '/pornstars/' + Pagination.size + '" rel="nofollow">' + Pagination.size + '</a>';
         },
         First: function () {
-            Pagination.code += '<a href="' + url + '/pornstars/page/1" rel="nofollow">1</a><i>...</i>';
+            Pagination.code += '<a href="' + url + '/pornstars/1" rel="nofollow">1</a><i>...</i>';
         },
         Click: function () {
             Pagination.page = +this.innerHTML;

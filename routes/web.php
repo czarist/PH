@@ -24,6 +24,7 @@ Route::fallback(function () {
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/page/{page}', [IndexController::class, 'page']);
 Route::get('/search', [IndexController::class, 'search']);
+Route::get('/random', [IndexController::class, 'random']);
 Route::get('/categories', [IndexController::class, 'categories']);
 Route::get('/pornstars/{page}', [IndexController::class, 'pornstars']);
 Route::get('/pornstar/{cat}/page/{page}', [IndexController::class, 'pornstar']);

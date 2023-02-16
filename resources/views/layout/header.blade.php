@@ -87,7 +87,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">RANDOM</a>
+                        <a class="nav-link" href="{{ url('/') }}/random">RANDOM</a>
                     </li>
 
                     <li class="nav-item">

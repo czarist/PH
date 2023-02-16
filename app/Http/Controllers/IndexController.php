@@ -18,12 +18,18 @@ class IndexController extends Controller
         $pagination_category = false;
         $pagination_pornstar = false;
         $pagination_pornstars = false;
-
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
-
+        
         return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+    }
+
+    public function random()
+    {
+        $page = rand(1, 5000);
+        $data = (new APIRequestController)->getData($page);
+        $title = preg_replace('/[\s\W]+/', '-', $data['videos'][0]['title']);
+        $id = $data['videos'][0]['id'];
+
+        return redirect(url('/') . "/video/$id/$title");
     }
 
     public function page($page)
@@ -108,5 +114,20 @@ class IndexController extends Controller
         $pagination_pornstars = false;
 
         return view('pornstar', compact('data', 'cat', 'page', 'query', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+    }
+
+    public function pornstars($page)
+    {
+        $data = (new APIRequestController)->getStarsList($page);
+        $count = (int) $data['count'];
+        $total_pages = ($count / 20) + 1;
+
+        $pagination = false;
+        $pagination_search = false;
+        $pagination_category = false;
+        $pagination_pornstar = false;
+        $pagination_pornstars = true;
+
+        return view('pornstars', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 }
