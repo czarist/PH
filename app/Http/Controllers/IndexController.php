@@ -16,12 +16,14 @@ class IndexController extends Controller
         $pagination = true;
         $pagination_search = false;
         $pagination_category = false;
+        $pagination_pornstar = false;
+        $pagination_pornstars = false;
 
         // echo '<pre>';
         // print_r($data);
         // echo '</pre>';
 
-        return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category'));
+        return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function page($page)
@@ -32,8 +34,10 @@ class IndexController extends Controller
         $pagination = true;
         $pagination_search = false;
         $pagination_category = false;
+        $pagination_pornstar = false;
+        $pagination_pornstars = false;
 
-        return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category'));
+        return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function search()
@@ -47,8 +51,10 @@ class IndexController extends Controller
         $pagination = false;
         $pagination_search = false;
         $pagination_category = true;
+        $pagination_pornstar = false;
+        $pagination_pornstars = false;
 
-        return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category'));
+        return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function error404()
@@ -56,8 +62,10 @@ class IndexController extends Controller
         $pagination = false;
         $pagination_search = false;
         $pagination_category = false;
+        $pagination_pornstar = false;
+        $pagination_pornstars = false;
 
-        return view('404', compact('pagination', 'pagination_search', 'pagination_category'));
+        return view('404', compact('pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function category($cat, $page)
@@ -68,8 +76,10 @@ class IndexController extends Controller
         $pagination = false;
         $pagination_search = false;
         $pagination_category = true;
+        $pagination_pornstar = false;
+        $pagination_pornstars = false;
 
-        return view('category', compact('data', 'page', 'cat', 'total_pages', 'pagination', 'pagination_search', 'pagination_category'));
+        return view('category', compact('data', 'page', 'cat', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function categories()
@@ -77,7 +87,26 @@ class IndexController extends Controller
         $pagination = false;
         $pagination_search = false;
         $pagination_category = false;
+        $pagination_pornstar = false;
+        $pagination_pornstars = false;
 
-        return view('categories', compact('pagination', 'pagination_search', 'pagination_category'));
+
+        return view('categories', compact('pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+    }
+
+    public function pornstar($cat, $page)
+    {
+        $query = preg_replace('/[\s\W]+/', '-', $cat);
+        echo "<input type='hidden' name='search_query' id='search_query' value='$query'>";
+        $data = (new APIRequestController)->getSearch($query, $page, 'long');
+        $total_pages = $data['total_pages'];
+
+        $pagination = false;
+        $pagination_search = false;
+        $pagination_category = false;
+        $pagination_pornstar = true;
+        $pagination_pornstars = false;
+
+        return view('pornstar', compact('data', 'cat', 'page', 'query', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 }

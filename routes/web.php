@@ -25,6 +25,8 @@ Route::get('/', [IndexController::class, 'index']);
 Route::get('/page/{page}', [IndexController::class, 'page']);
 Route::get('/search', [IndexController::class, 'search']);
 Route::get('/categories', [IndexController::class, 'categories']);
+Route::get('/pornstars/{page}', [IndexController::class, 'pornstars']);
+Route::get('/pornstar/{cat}/page/{page}', [IndexController::class, 'pornstar']);
 Route::get('/category/{cat}/page/{page}', [IndexController::class, 'category']);
 Route::get('/tag/{cat}/page/{page}', [IndexController::class, 'category']);
 

@@ -39,10 +39,13 @@ class VideoController extends Controller
         $pagination = false;
         $pagination_search = false;
         $pagination_category = false;
+        $pagination_pornstar = false;
+        $pagination_pornstars = false;
+
         // echo '<pre>';
         // print_r($relateds);
         // echo '</pre>';
 
-        return view('video', compact('video', 'title', 'pagination', 'keywords', 'relateds', 'pagination_search', 'pagination_category'));
+        return view('video', compact('video', 'title', 'pagination', 'keywords', 'relateds', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 }

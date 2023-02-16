@@ -48,6 +48,13 @@
         <script src="{{ asset('js/pagination_category.js') }}"></script>
     @endif
 
+    @if ($pagination_pornstars)
+        <script src="{{ asset('js/pagination_pornstars.js') }}"></script>
+    @endif
+
+    @if ($pagination_pornstar)
+        <script src="{{ asset('js/pagination_pornstar.js') }}"></script>
+    @endif
 
     <title>Porn Hubbi</title>
 
@@ -84,7 +91,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">PORNSTARS</a>
+                        <a class="nav-link" href="{{ url('/') }}/pornstars/1">PORNSTARS</a>
                     </li>
 
                     <li class="nav-item">
