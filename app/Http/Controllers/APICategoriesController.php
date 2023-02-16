@@ -15,13 +15,4 @@ class APIcategoriesController extends Controller
             $request
         ]);
     }
-
-    public function stars(Request $request, $page)
-    {
-        $request = (new APIRequestController)->getStarsList($page);
-
-        return response()->json([
-            $request
-        ]);
-    }
 }

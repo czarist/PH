@@ -18,8 +18,9 @@ class IndexController extends Controller
         $pagination_category = false;
         $pagination_pornstar = false;
         $pagination_pornstars = false;
-        
-        return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+        $title = "Home";
+
+        return view('home', compact('data', 'title', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function random()
@@ -42,8 +43,9 @@ class IndexController extends Controller
         $pagination_category = false;
         $pagination_pornstar = false;
         $pagination_pornstars = false;
+        $title = "Page - $page";
 
-        return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+        return view('home', compact('data', 'title', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function search()
@@ -59,8 +61,9 @@ class IndexController extends Controller
         $pagination_category = true;
         $pagination_pornstar = false;
         $pagination_pornstars = false;
+        $title = "Search: $query - Page: $page";
 
-        return view('home', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+        return view('home', compact('data', 'page', 'title', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function error404()
@@ -70,8 +73,9 @@ class IndexController extends Controller
         $pagination_category = false;
         $pagination_pornstar = false;
         $pagination_pornstars = false;
+        $title = "ERROR 404";
 
-        return view('404', compact('pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+        return view('404', compact('pagination', 'title', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function category($cat, $page)
@@ -84,8 +88,9 @@ class IndexController extends Controller
         $pagination_category = true;
         $pagination_pornstar = false;
         $pagination_pornstars = false;
+        $title = "Category: $cat - Page: $page";
 
-        return view('category', compact('data', 'page', 'cat', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+        return view('category', compact('data', 'title', 'page', 'cat', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function categories()
@@ -95,9 +100,9 @@ class IndexController extends Controller
         $pagination_category = false;
         $pagination_pornstar = false;
         $pagination_pornstars = false;
+        $title = "Categories";
 
-
-        return view('categories', compact('pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+        return view('categories', compact('pagination', 'title', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function pornstar($cat, $page)
@@ -112,8 +117,9 @@ class IndexController extends Controller
         $pagination_category = false;
         $pagination_pornstar = true;
         $pagination_pornstars = false;
+        $title = "Pornstar: $cat - Page: $page";
 
-        return view('pornstar', compact('data', 'cat', 'page', 'query', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+        return view('pornstar', compact('data', 'title', 'cat', 'page', 'query', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 
     public function pornstars($page)
@@ -127,7 +133,8 @@ class IndexController extends Controller
         $pagination_category = false;
         $pagination_pornstar = false;
         $pagination_pornstars = true;
+        $title = "Pornstars";
 
-        return view('pornstars', compact('data', 'page', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+        return view('pornstars', compact('data', 'page', 'title', 'total_pages', 'pagination', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 }
