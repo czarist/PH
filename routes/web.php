@@ -37,5 +37,6 @@ Route::get('/tag/{cat}/page/{page}', [IndexController::class, 'category']);
 
 Route::get('/video/{id}/{title}', [VideoController::class, 'index']);
 
-//sitemap
-Route::get('/sitemap', [SitemapController::class, 'generate']);
+//sitemaps
+Route::get('/sitemap', [SitemapController::class, 'index']);
+Route::get('/sitemap/interns', [SitemapController::class, 'interns']);

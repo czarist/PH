@@ -5,53 +5,54 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
+use Spatie\Sitemap\SitemapIndex;
+use App\Http\Controllers\api\APIRequestController;
+
+ini_set('memory_limit', '1024MB');
 
 class SitemapController extends Controller
 {
-    public function generate()
+    public function index()
     {
+        $data = (new APIRequestController)->getData(1);
+        $pages = intval($data["total_pages"]);
         // URLs dos sitemaps secundários
         $sitemapUrls = [
-            '/sitemap-1.xml',
-            '/sitemap-2.xml',
-            '/sitemap-3.xml',
-            '/sitemap-4.xml',
+            '/sitemap/interns',
+            '/sitemap/categories',
+            '/sitemap/stars',
+            '/sitemap/tags',
+            'sitemapindex2.xml',
+            'sitemap/pages1',
+            'sitemap/pages2'
         ];
 
-        // Criar cada um dos sitemaps secundários
-        foreach ($sitemapUrls as $url) {
-            $sitemap = Sitemap::create(url('/'));
+        $sitemapUrls2 = [];
 
-            // Adicionar URLs ao sitemap secundário
-            for ($i = 1; $i <= 10; $i++) {
-                $sitemap->add(
-                    Url::create(url("/page/{$i}"))
-                        ->setLastModificationDate(Carbon::now())
-                        ->setChangeFrequency('daily')
-                        ->setPriority(0.5)
-                );
-            }
+        for ($i = 1; $i <= 49993; $i++) {
+            array_push($sitemapUrls, "/sitemap/page/$i");
+        }
 
-            // Escrever o sitemap secundário para um arquivo
-            $sitemap->writeToFile($url);
+        for ($i = 49994; $i <= $pages; $i++) {
+            array_push($sitemapUrls2, "/sitemap/page/$i");
         }
 
         // Criar o sitemap index
-        $sitemapIndex = Sitemap::create();
+        $sitemapIndex = SitemapIndex::create();
+        $sitemapIndex2 = SitemapIndex::create();
 
         // Adicionar cada sitemap secundário ao sitemap index
         foreach ($sitemapUrls as $url) {
-            $sitemapIndex->add(
-                Url::create(url($url))
-                    ->setLastModificationDate(Carbon::now())
-                    ->setChangeFrequency('daily')
-                    ->setPriority(0.5)
-            );
+            $sitemapIndex->add(($url));
+        }
+        foreach ($sitemapUrls2 as $url) {
+            $sitemapIndex2->add(($url));
         }
 
         // Escrever o sitemap index para um arquivo
-        $sitemapIndex->writeToFile('sitemap.xml');
+        $sitemapIndex->writeToFile('sitemapindex.xml');
+        $sitemapIndex2->writeToFile('sitemapindex2.xml');
 
-        return 'Sitemap gerado com sucesso!';
+        return 'Sitemap created!';
     }
 }
