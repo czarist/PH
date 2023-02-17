@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\SitemapController;
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +15,7 @@ use App\Http\Controllers\VideoController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::fallback(function () {
     return app()->make(\App\Http\Controllers\IndexController::class)->error404();
@@ -34,3 +36,6 @@ Route::get('/tag/{cat}/page/{page}', [IndexController::class, 'category']);
 //video posts
 
 Route::get('/video/{id}/{title}', [VideoController::class, 'index']);
+
+//sitemap
+Route::get('/sitemap', [SitemapController::class, 'generate']);
