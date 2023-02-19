@@ -8,23 +8,22 @@ use Spatie\Sitemap\Tags\Url;
 use Spatie\Sitemap\SitemapIndex;
 use App\Http\Controllers\api\APIRequestController;
 
-ini_set('memory_limit', '1024MB');
-
 class SitemapController extends Controller
 {
     public function index()
     {
         $data = (new APIRequestController)->getData(1);
         $pages = intval($data["total_pages"]);
+
         // URLs dos sitemaps secundários
         $sitemapUrls = [
             '/sitemap/interns',
             '/sitemap/categories',
             '/sitemap/stars',
             '/sitemap/tags',
-            'sitemapindex2.xml',
-            'sitemap/pages1',
-            'sitemap/pages2'
+            '/sitemap/pages1',
+            '/sitemap/pages2',
+            '/sitemaps/sitemapindex2.xml',
         ];
 
         $sitemapUrls2 = [];
@@ -50,9 +49,52 @@ class SitemapController extends Controller
         }
 
         // Escrever o sitemap index para um arquivo
-        $sitemapIndex->writeToFile('sitemapindex.xml');
-        $sitemapIndex2->writeToFile('sitemapindex2.xml');
+        $sitemapIndex->writeToFile('sitemaps/sitemapindex.xml');
+        $sitemapIndex2->writeToFile('sitemaps/sitemapindex2.xml');
 
         return 'Sitemap created!';
+    }
+
+    public function interns()
+    {
+        $url = url('/');
+
+        $links = [$url, "$url/categories", "$url/pornstars"];
+
+        $sitemap = Sitemap::create(url('/'));
+
+        foreach ($links as $link) {
+            $sitemap->add(Url::create($link)
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                ->setPriority(0.8));
+        }
+
+        $sitemap->writeToFile(public_path('sitemaps/interns.xml'));
+
+
+        return 'Sitemap interns created! - ' . url('/') . '/sitemaps/interns.xml';
+    }
+
+    public function categories()
+    {
+        $categories = (new APIRequestController)->getCategoriesList();
+        $allCat = array_merge($categories["categories"], $categories["categories_gay"]);
+
+        echo '<pre>';
+        var_dump($allCat);
+        echo '</pre>';
+    }
+
+    public function pages1()
+    {
+    }
+
+    public function pages2()
+    {
+    }
+
+    public function page($page)
+    {
     }
 }

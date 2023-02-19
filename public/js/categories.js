@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 category = category.replace(/\s|[0-9_]|\W|[#$%^&*()]/g, '-');
 
                 gayList.innerHTML += `
-                <a class="category_tag text-dark" href="${url}/category/${category}-gay/page/1"><b>${category}</b></a> `;
+                <a class="category_tag text-dark" href="${url}/category/${category}/page/1"><b>${category}</b></a> `;
             }
         }).catch(console.error);
 });
