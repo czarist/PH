@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
-use Spatie\Sitemap\Tags\Video;
 use Spatie\Sitemap\SitemapIndex;
 use App\Http\Controllers\api\APIRequestController;
 use SimpleXMLElement;
