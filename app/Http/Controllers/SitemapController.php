@@ -51,19 +51,16 @@ class SitemapController extends Controller
         // URLs dos sitemaps secundários
         $sitemapUrls = [
             '/sitemap/interns',
-            '/sitemap/categories',
-            '/sitemap/stars',
-            '/sitemap/tags',
             '/sitemaps/sitemapindex2.xml',
         ];
 
         $sitemapUrls2 = [];
 
-        for ($i = 1; $i <= 49993; $i++) {
+        for ($i = 1; $i <= 49998; $i++) {
             array_push($sitemapUrls, "/sitemap/page/$i");
         }
 
-        for ($i = 49994; $i <= $pages; $i++) {
+        for ($i = 49997; $i <= $pages; $i++) {
             array_push($sitemapUrls2, "/sitemap/page/$i");
         }
 
