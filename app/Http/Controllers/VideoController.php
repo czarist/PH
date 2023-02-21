@@ -12,7 +12,7 @@ class VideoController extends Controller
         $video = (new APIRequestController)->getVideo($id);
 
         if (empty($video)) {
-            return redirect('/');
+            return redirect('/random');
         }
 
         $keywords_before = explode(",", $video['keywords']);

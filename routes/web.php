@@ -38,7 +38,4 @@ Route::get('/video/{id}/{title}', [VideoController::class, 'index']);
 //sitemaps
 Route::get('/sitemap', [SitemapController::class, 'index']);
 Route::get('/sitemap/interns', [SitemapController::class, 'interns']);
-Route::get('/sitemap/categories', [SitemapController::class, 'categories']);
-Route::get('/sitemap/pages1', [SitemapController::class, 'pages1']);
-Route::get('/sitemap/pages2', [SitemapController::class, 'pages2']);
 Route::get('/sitemap/page/{page}', [SitemapController::class, 'page']);
