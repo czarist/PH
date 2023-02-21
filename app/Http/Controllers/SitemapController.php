@@ -48,7 +48,6 @@ class SitemapController extends Controller
         $data = (new APIRequestController)->getData(1);
         $pages = intval($data["total_pages"]);
 
-        // URLs dos sitemaps secundários
         $sitemapUrls = [
             '/sitemap/interns',
             '/sitemaps/sitemapindex2.xml',
@@ -64,11 +63,9 @@ class SitemapController extends Controller
             array_push($sitemapUrls2, "/sitemap/page/$i");
         }
 
-        // Criar o sitemap index
         $sitemapIndex = SitemapIndex::create();
         $sitemapIndex2 = SitemapIndex::create();
 
-        // Adicionar cada sitemap secundário ao sitemap index
         foreach ($sitemapUrls as $url) {
             $sitemapIndex->add(($url));
         }
@@ -76,7 +73,6 @@ class SitemapController extends Controller
             $sitemapIndex2->add(($url));
         }
 
-        // Escrever o sitemap index para um arquivo
         $sitemapIndex->writeToFile('sitemaps/sitemapindex.xml');
         $sitemapIndex2->writeToFile('sitemaps/sitemapindex2.xml');
 
