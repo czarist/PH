@@ -27,8 +27,6 @@ class IndexController extends Controller
         return $output;
     }
 
-
-
     public function index()
     {
         $page = 1;

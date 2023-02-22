@@ -115,4 +115,5 @@
     }
     </script>
 @endif
+
 {{-- ends meta tags --}}

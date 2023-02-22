@@ -4,8 +4,8 @@
 
     <div id="inner-footer" class="container mb-2">
         <p class="mb-1 source-org copyright text-white text-center">&copy;
-            <span class="mr-2">{{ date('Y') }}.</span>
-            <a style="color: #FF9900;" href="{{ url('/') }}">pornhubbi.com</a>
+            <span class="mr-2">{{ date('Y') }}</span>
+            <a itemprop="url" style="color: #FF9900;" href="{{ url('/') }}">© PornHubbi.com</a>
             <span class="ml-2">All Rights Reserved</span>
         </p>
     </div>

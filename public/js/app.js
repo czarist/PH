@@ -103,11 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 category = category.replace(/\s|[0-9_]|\W|[#$%^&*()]/g, '-');
 
                 nav.innerHTML += `
-                <a class="dropdown-item bg-dark" href="${url}/category/${category}/page/1">${category}</a>
+                <a itemprop="url" class="dropdown-item bg-dark" href="${url}/category/${category}/page/1">${category}</a>
                 <div class="dropdown-divider bg-dark"></div>
                 `;
                 navCatsMobile.innerHTML += `
-                <a class="dropdown-item bg-dark" href="${url}/category/${category}/page/1">${category}</a>
+                <a itemprop="url" class="dropdown-item bg-dark" href="${url}/category/${category}/page/1">${category}</a>
                 <div class="dropdown-divider bg-dark"></div>
                 `;
                 count++;

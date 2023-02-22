@@ -35,4 +35,6 @@
     </div>
 </div>
 
+@include('layout.jdjson2')
+
 @include('layout.footer')

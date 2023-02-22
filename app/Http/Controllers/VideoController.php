@@ -53,7 +53,13 @@ class VideoController extends Controller
         $string = str_replace(' ', '', $referencial);
 
         $firstTerm = preg_replace('/[\s\W]+/', '-', $string);
+
         $relateds = (new APIRequestController)->getSearch($firstTerm, 1, 'short');
+        
+        for ($i = 0; $i < count($relateds["videos"]); $i++) {
+            $relateds["videos"][$i]['time'] = $this->secondsToISO8601($relateds["videos"][$i]['length_sec']);
+            $relateds["videos"][$i]['formattedDate'] = str_replace(' ', 'T', $relateds["videos"][$i]['added']) . '+00:00';
+        }
 
         $pagination = false;
         $pagination_search = false;
@@ -67,6 +73,7 @@ class VideoController extends Controller
         $views = $video['views'];
         $time = $this->secondsToISO8601($video['length_sec']);
         $keywordsList = implode(", ", $keywords);
+
 
         $meta_tags = [
             'video' => true,
@@ -85,10 +92,6 @@ class VideoController extends Controller
             ],
             'og:image:url' =>  $video['default_thumb']['src']
         ];
-
-        // echo '<pre>';
-        // print_r($relateds);
-        // echo '</pre>';
 
         return view('video', compact('video', 'title', 'meta_tags', 'pagination', 'keywords', 'relateds', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
