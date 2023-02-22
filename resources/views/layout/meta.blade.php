@@ -53,7 +53,7 @@
     <meta property="og:video:type" content="video/mp4" />
     <meta property="og:video:width" content="1280" />
     <meta property="og:video:height" content="720" />
-    <meta property="og:video:duration" content="180" />
+    <meta property="og:video:duration" content="{{ $meta_tags['video:duration'] }}" />
     <meta property="og:video:tag" content="{{ $meta_tags['keywords'] }}" />
 @endif
 
