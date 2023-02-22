@@ -6,7 +6,7 @@
             <div class="col-12">
                 <h1 class="text-white">{{ $video['title'] }}</h1>
                 <div class="d-flex justify-content-center align-items-center">
-                    <iframe id="video" width="1100" height="550" src="{{ $video['embed'] }}"
+                    <iframe id="video" width="1280" height="720" src="{{ $video['embed'] }}"
                         title="{{ $video['keywords'] }}">
                     </iframe>
                 </div>

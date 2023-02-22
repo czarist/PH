@@ -24,7 +24,7 @@ class VideoController extends Controller
         $referencial = '';
 
         foreach ($keywords as $keyword) {
-            if (strlen($keyword) > 8) {
+            if (strlen($keyword) > 10) {
                 $referencial = $keyword;
             } else {
                 continue;
@@ -42,10 +42,32 @@ class VideoController extends Controller
         $pagination_pornstar = false;
         $pagination_pornstars = false;
 
+        $dateString = $video['added'];
+        $timestamp = strtotime($dateString);
+        $iso8601 = date('c', $timestamp);
+
+        $keywordsList = implode(", ", $keywords);
+
+        $meta_tags = [
+            'video' => true,
+            'video:url' => $video['embed'],
+            'video:duration' => $video['length_sec'],
+            'title' => $title,
+            'description' => $title . ' - ' . $keywordsList,
+            'keywords' =>  $keywordsList,
+            'thumbnail' => $video['default_thumb']['src'],
+            'published_time' => $iso8601,
+            'og:url' => url('/'),
+            'og:image' => [
+                $video['default_thumb']['src'],
+            ],
+            'og:image:url' =>  $video['default_thumb']['src']
+        ];
+
         // echo '<pre>';
         // print_r($relateds);
         // echo '</pre>';
 
-        return view('video', compact('video', 'title', 'pagination', 'keywords', 'relateds', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
+        return view('video', compact('video', 'title', 'meta_tags', 'pagination', 'keywords', 'relateds', 'pagination_search', 'pagination_category', 'pagination_pornstar', 'pagination_pornstars'));
     }
 }

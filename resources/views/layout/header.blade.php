@@ -2,9 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    @include('layout.meta')
 
     {{-- jQuery --}}
     <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
@@ -47,8 +46,6 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <title>Porn Hubbi - {{ $title }}</title>
-
     {{-- input hiddens --}}
 
     @if ($pagination_search)
@@ -57,7 +54,7 @@
     @endif
 
     <input type="hidden" name="baseURL" id="baseURL" value="{{ url('/') }}">
-    <input type="hidden" name="title" id="title" value="{{ $title }}">
+    <input type="hidden" name="title" id="title" value="{{ $meta_tags['title'] }}">
 </head>
 
 <body class="bg-dark">
@@ -115,8 +112,8 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a id="cat-nav-link-mob" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a id="cat-nav-link-mob" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             CATEGORIES
                         </a>
                         <div id="nav-mobile" class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
@@ -132,7 +129,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" id="stars-nav-link-mob" href="{{ url('/') }}/pornstars/1">PORNSTARS</a>
+                        <a class="nav-link" id="stars-nav-link-mob"
+                            href="{{ url('/') }}/pornstars/1">PORNSTARS</a>
                     </li>
 
                     <li class="nav-item">
