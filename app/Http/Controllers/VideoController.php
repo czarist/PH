@@ -7,6 +7,25 @@ use App\Http\Controllers\api\APIRequestController;
 
 class VideoController extends Controller
 {
+    private function secondsToISO8601($seconds)
+    {
+        $hours = floor($seconds / 3600);
+        $minutes = floor(($seconds % 3600) / 60);
+        $seconds = $seconds % 60;
+
+        $output = 'PT';
+        if ($hours > 0) {
+            $output .= $hours . 'H';
+        }
+        if ($minutes > 0) {
+            $output .= $minutes . 'M';
+        }
+        if ($seconds > 0) {
+            $output .= $seconds . 'S';
+        }
+        return $output;
+    }
+
     public function index($id, $title)
     {
         $video = (new APIRequestController)->getVideo($id);
@@ -45,18 +64,21 @@ class VideoController extends Controller
         $dateString = $video['added'];
         $timestamp = strtotime($dateString);
         $iso8601 = date('c', $timestamp);
-
+        $views = $video['views'];
+        $time = $this->secondsToISO8601($video['length_sec']);
         $keywordsList = implode(", ", $keywords);
 
         $meta_tags = [
             'video' => true,
             'video:url' => $video['embed'],
             'video:duration' => $video['length_sec'],
+            'time' => $time,
             'title' => $title,
             'description' => $title . ' - ' . $keywordsList,
             'keywords' =>  $keywordsList,
             'thumbnail' => $video['default_thumb']['src'],
             'published_time' => $iso8601,
+            'views' => $views,
             'og:url' => url('/'),
             'og:image' => [
                 $video['default_thumb']['src'],

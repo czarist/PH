@@ -61,6 +61,58 @@
     <meta property="og:image" content="{{ $meta_tag }}">
 @endforeach
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Video","name":"Title - Porn Hubbi - {{ $meta_tags['title'] }}"}</script>
-
+@if ($meta_tags['video'])
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "VideoObject",
+        "name": "Porn Hubbi - {{ $meta_tags['title'] }}",
+        "description": "{{$meta_tags['description']}}",
+        "thumbnailUrl": "{{ $meta_tags['thumbnail'] }}",
+        "uploadDate": "{{ $meta_tags['published_time'] }}",
+        "duration": "{{ $meta_tags['time'] }}",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Porm Hubbi",
+          "url": "{{ url('/') }}"
+        },
+        "contentUrl": "{{ $meta_tags['video:url'] }}",
+        "embedUrl": "{{ $meta_tags['video:url'] }}",
+        "interactionCount": {
+          "@type": "InteractionCounter",
+          "userInteractionCount": "{{ $meta_tags['views'] }}"
+        }
+      }
+  </script>
+@else
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "WebPage",
+      "name": "Porn Hubbi - {{ $meta_tags['title'] }}",
+      "url": "{{ request()->url() }}",
+      "description": "{{$meta_tags['description']}}",
+      "author": {
+        "@type": "Person",
+        "name": "@czarist"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "@czarist",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ url('/') }}/img/apple-touch-icon.png",
+          "width": 180,
+          "height": 180
+        }
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ url('/') }}/img/apple-touch-icon.png",
+        "width": 180,
+        "height": 180
+      }
+    }
+    </script>
+@endif
 {{-- ends meta tags --}}

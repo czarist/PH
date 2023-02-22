@@ -7,6 +7,28 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+
+    private function secondsToISO8601($seconds)
+    {
+        $hours = floor($seconds / 3600);
+        $minutes = floor(($seconds % 3600) / 60);
+        $seconds = $seconds % 60;
+
+        $output = 'PT';
+        if ($hours > 0) {
+            $output .= $hours . 'H';
+        }
+        if ($minutes > 0) {
+            $output .= $minutes . 'M';
+        }
+        if ($seconds > 0) {
+            $output .= $seconds . 'S';
+        }
+        return $output;
+    }
+
+
+
     public function index()
     {
         $page = 1;
@@ -23,6 +45,16 @@ class IndexController extends Controller
             $array = explode(", ", $video["keywords"]);
             $keywordsArray = array_merge($keywordsArray, $array);
         }
+
+        for ($i = 0; $i < count($data["videos"]); $i++) {
+            $data["videos"][$i]['time'] = $this->secondsToISO8601($data["videos"][$i]['length_sec']);
+            $data["videos"][$i]['formattedDate'] = str_replace(' ', 'T', $data["videos"][$i]['added']) . '+00:00';
+        }
+
+        // echo "<pre>";
+        // var_dump($data['videos']);
+        // echo "</pre>";
+        // die;
 
         $keywordsArray = array_filter($keywordsArray, function ($value) {
             return strlen($value) <= 10;
@@ -82,6 +114,11 @@ class IndexController extends Controller
             $keywordsArray = array_merge($keywordsArray, $array);
         }
 
+        for ($i = 0; $i < count($data["videos"]); $i++) {
+            $data["videos"][$i]['time'] = $this->secondsToISO8601($data["videos"][$i]['length_sec']);
+            $data["videos"][$i]['formattedDate'] = str_replace(' ', 'T', $data["videos"][$i]['added']) . '+00:00';
+        }
+
         $keywordsArray = array_filter($keywordsArray, function ($value) {
             return strlen($value) <= 10;
         });
@@ -132,6 +169,11 @@ class IndexController extends Controller
         foreach ($data["videos"] as $video) {
             $array = explode(", ", $video["keywords"]);
             $keywordsArray = array_merge($keywordsArray, $array);
+        }
+
+        for ($i = 0; $i < count($data["videos"]); $i++) {
+            $data["videos"][$i]['time'] = $this->secondsToISO8601($data["videos"][$i]['length_sec']);
+            $data["videos"][$i]['formattedDate'] = str_replace(' ', 'T', $data["videos"][$i]['added']) . '+00:00';
         }
 
         $keywordsArray = array_filter($keywordsArray, function ($value) {
@@ -209,6 +251,11 @@ class IndexController extends Controller
             $keywordsArray = array_merge($keywordsArray, $array);
         }
 
+        for ($i = 0; $i < count($data["videos"]); $i++) {
+            $data["videos"][$i]['time'] = $this->secondsToISO8601($data["videos"][$i]['length_sec']);
+            $data["videos"][$i]['formattedDate'] = str_replace(' ', 'T', $data["videos"][$i]['added']) . '+00:00';
+        }
+
         $keywordsArray = array_filter($keywordsArray, function ($value) {
             return strlen($value) <= 10;
         });
@@ -284,6 +331,11 @@ class IndexController extends Controller
         foreach ($data["videos"] as $video) {
             $array = explode(", ", $video["keywords"]);
             $keywordsArray = array_merge($keywordsArray, $array);
+        }
+
+        for ($i = 0; $i < count($data["videos"]); $i++) {
+            $data["videos"][$i]['time'] = $this->secondsToISO8601($data["videos"][$i]['length_sec']);
+            $data["videos"][$i]['formattedDate'] = str_replace(' ', 'T', $data["videos"][$i]['added']) . '+00:00';
         }
 
         $keywordsArray = array_filter($keywordsArray, function ($value) {

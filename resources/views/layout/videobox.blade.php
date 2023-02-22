@@ -1,4 +1,5 @@
-<div class="col-xl-3 col-12 mb-3 text-white mt-4 video-box position-relative d-flex align-items-center flex-column justify-content-center">
+<div
+    class="col-xl-3 col-12 mb-3 text-white mt-4 video-box position-relative d-flex align-items-center flex-column justify-content-center">
     <a class="position-relative mw-100 h-100"
         href="{{ url('/video') }}/{{ $video['id'] }}/{{ preg_replace('/[\s\W]+/', '-', $video['title']) }}">
         <img class="mw-100 img-box-video" src="{{ $video['default_thumb']['src'] }}" width="427"
