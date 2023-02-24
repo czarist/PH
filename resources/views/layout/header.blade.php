@@ -142,8 +142,7 @@
                         <a itemprop="url" class="nav-link" href="#">LIVE SEX</a>
                     </li>
                 </ul>
-                <form itemscope itemtype="http://schema.org/SearchAction" class="my-2 my-lg-0 d-flex"
-                    action="{{ url('/search') }}" id="search_videos">
+                <form class="my-2 my-lg-0 d-flex" action="{{ url('/search') }}" id="search_videos">
                     <input type="hidden" name="page_search" id="page_search" value="1">
                     <input class="form-control" type="text" id="search_query" placeholder="Search"
                         name="search_query">
