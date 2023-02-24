@@ -3,7 +3,7 @@
 <title>Porn Hubbi - {{ $meta_tags['title'] }}</title>
 <link rel="icon" href="{{ url('/') }}/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ url('/') }}/img/apple-touch-icon.png">
-<link rel="canonical" href="{{ url('/') }}">
+<link rel="canonical" href="{{ request()->url() }}">
 
 <meta charset="UTF-8">
 <meta name="robots" content="index, follow, all">

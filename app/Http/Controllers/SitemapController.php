@@ -102,7 +102,7 @@ class SitemapController extends Controller
     public function interns()
     {
 
-        $links = ["/", "/categories", "/pornstars"];
+        $links = ["/", "/categories", "/pornstars/1"];
 
         $sitemap = Sitemap::create(url('/'));
 
